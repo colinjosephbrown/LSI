@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 from lsi import lsi
 
+
 def lsi_demo(n=10, params=None):
     """
     This script shows a visual demo of the local synthetic instances (LSI) method.
@@ -15,7 +16,7 @@ def lsi_demo(n=10, params=None):
     m = 2
     x = np.random.rand(n, m)
     y = np.random.rand(n, 1)
-    params={'num_synthetic_instances': 100}
+    params = {'num_synthetic_instances': 100}
 
     synth_x = None
     synth_y = None
