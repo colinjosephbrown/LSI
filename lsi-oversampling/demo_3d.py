@@ -2,8 +2,6 @@ import numpy as np
 import math
 import matplotlib
 matplotlib.use('TkAgg')
-matplotlib.rcParams['animation.ffmpeg_path'] = U'/usr/local/Cellar/ffmpeg/4.1_1/bin/ffmpeg'
-matplotlib.rcParams['animation.convert_path'] = U'/usr/local/Cellar/imagemagick/7.0.8-23/bin/convert'
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import FuncAnimation
@@ -11,7 +9,7 @@ from matplotlib.animation import FuncAnimation
 from lsi import lsi
 
 
-def lsi_demo_3d(n=32, params=None, animate=True, output_path=None):
+def lsi_demo_3d(n=32, params=None, animate=False, output_path=None):
     """
     This script shows a visual demo of the local synthetic instances (LSI) method.
     In particular, it first generates N random points in 2D, representing an input dataset, and then generates synthetic instances using LSI.
@@ -24,17 +22,15 @@ def lsi_demo_3d(n=32, params=None, animate=True, output_path=None):
     fig.set_tight_layout(True)
     ax = fig.add_subplot(1, 1, 1, projection='3d')
 
-    #x, y, m = helix_data(n)
-    #x, y, m = wave_data(n)
     x, y, m = random_data(n)
 
     if animate:
-        params['num_synthetic_instances'] = params.get('num_synthetic_instances', 10)
-        ax.scatter(x[:, 0], x[:, 1], x[:, 2], 'go')
+        params['num_synthetic_instances'] = params.get('num_synthetic_instances', 15)
+        ax.scatter(x[:, 0], x[:, 1], x[:, 2], 'go', c=[0.9, 0.1, 0.1])
 
-        p_vals = np.arange(1.2, 3.0, 0.01)
-        intro_len = 50
-        outro_len = 50
+        p_vals = np.arange(1.6, 3.0, 0.01)
+        intro_len = 75
+        outro_len = 100
 
         def update(i):
             if i >= intro_len and i < intro_len + len(p_vals):
@@ -52,7 +48,7 @@ def lsi_demo_3d(n=32, params=None, animate=True, output_path=None):
 
         anim = FuncAnimation(fig, update, frames=frames, interval=30)
         if output_path is not None:
-            anim.save(output_path, dpi=200, writer='imagemagick')
+            anim.save(output_path, dpi=80, writer='imagemagick')
         else:
             plt.show()
 
@@ -81,7 +77,7 @@ def wave_data(n):
     i = j = 0
     for k in range(n):
         t_i = math.pi * float(i) / n_i
-        t_j = (4 * math.pi) * float(j) / n_i
+        t_j = (2 * math.pi) * float(j) / n_i
 
         x[k, 0] = t_i
         x[k, 1] = t_j
@@ -110,4 +106,4 @@ def helix_data(n):
     return x, y, m
 
 if __name__ == '__main__':
-    lsi_demo_3d(output_path='/Users/cjbrown/Documents/lsi_anim.gif')
+    lsi_demo_3d()
