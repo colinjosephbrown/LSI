@@ -1,7 +1,7 @@
 # LSI
 <img src="lsi_3D.gif" width="320" /> <img src="lsi_saddle.gif" width="320" /> <img src="lsi_legend.png" width="200" />
 
-Implementation of local synthetic instances (LSI) oversampling method. The LSI method is described in this MICCAI 2015 paper [PDF](http://www.sfu.ca/~cjbrown/pdfs/miccai2015a.pdf)|[DOI](https://doi.org/10.1007/978-3-319-24553-9_9)
+Local synthetic instances (LSI) is an oversampling method for synthetic data generation or similar tasks. It is designed for the challenging case of high-dimensional, non-gaussian data with low sample size. The LSI method is described in this MICCAI 2015 paper [PDF](http://www.sfu.ca/~cjbrown/pdfs/miccai2015a.pdf)|[DOI](https://doi.org/10.1007/978-3-319-24553-9_9)
 
 Note that matplotlib.pyplot is required to run the demo but not to use the core LSI function.
 
