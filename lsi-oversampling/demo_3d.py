@@ -57,8 +57,9 @@ def lsi_demo_3d(n=32, params=None, animate=False, output_path=None):
         params['prange'] = params.get('prange', [1.2, 3.0])
 
         synth_x, synth_y = lsi(x, y, params)
-        ax.scatter(x[:, 0], x[:, 1], x[:, 2], 'go')
-        ax.scatter(synth_x[:, 0], synth_x[:, 1], synth_x[:, 2], 'b+')
+        ax.scatter(x[:, 0], x[:, 1], x[:, 2], c=[0.9, 0.1, 0.1])
+        ax.scatter(synth_x[:, 0], synth_x[:, 1], synth_x[:, 2], c=[0.1, 0.1, 0.9])
+        ax.legend(['Real Data', 'Synthetic Data'])
         plt.draw()
 
 
